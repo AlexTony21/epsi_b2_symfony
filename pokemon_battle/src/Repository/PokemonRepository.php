@@ -1,17 +1,13 @@
 <?php
-
 namespace App\Repository;
-
 use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-
 /**
  * @method Pokemon|null find($id, $lockMode = null, $lockVersion = null)
  * @method Pokemon|null findOneBy(array $criteria, array $orderBy = null)
  * @method Pokemon[]    findAll()
  * @method Pokemon[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @method Pokemon[]    findByType($value)
  */
 class PokemonRepository extends ServiceEntityRepository
 {
@@ -19,7 +15,17 @@ class PokemonRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Pokemon::class);
     }
-
+    public function FindByType($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.Type = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.nom', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     // /**
     //  * @return Pokemon[] Returns an array of Pokemon objects
     //  */
@@ -36,7 +42,6 @@ class PokemonRepository extends ServiceEntityRepository
         ;
     }
     */
-
     /*
     public function findOneBySomeField($value): ?Pokemon
     {
@@ -48,12 +53,4 @@ class PokemonRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function FindByType($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.type = :val')
-            ->orderBy('p.name', 'ASC')
-            ->limit('5')
-            ;
-    }
 }

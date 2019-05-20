@@ -40,7 +40,7 @@ class Pokemon extends Master
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\EquipePokemon", inversedBy="Pokemons")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $equipePokemon;
 

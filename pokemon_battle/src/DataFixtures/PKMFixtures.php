@@ -22,6 +22,7 @@ class PKMFixtures extends Fixture
     		;
 
     		$manager->persist($pkm);
+            $reference = $this -> addReference($name, $pkm);
     	}
 
     	$manager->flush();
@@ -31,9 +32,9 @@ class PKMFixtures extends Fixture
     public function getAttacks()
     {
     	return [
-    		['Hericendre', 20, 'Flammeche', 'Charge', Type::TYPE_NORMAL],
-    		['Grenousse', 20, 'Fouet Liane', 'Charge', Type::TYPE_PLANT],
-    		['Vipelierre', 20, 'Bulle d\'O', 'Charge', Type::TYPE_WATER]
+    		['Hericendre', 20, 'Ember', 'Tackle', Type::TYPE_FIRE],
+    		['Grenousse', 20, 'Vine Whip', 'Tackle', Type::TYPE_WATER],
+    		['Vipelierre', 20, 'Bubble Beam', 'Tackle', Type::TYPE_PLANT]
     	];
     }
 }

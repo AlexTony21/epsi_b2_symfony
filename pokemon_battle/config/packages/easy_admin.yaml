@@ -1,0 +1,24 @@
+easy_admin:
+    site_name : 'BLAKE IS LOVE !'
+    user :
+        display_name : true
+        display_avatar : false
+    design :
+        brand_color : '#1ABC9C'
+    entities:
+        # List the entity class name you want to manage
+        ATK :
+          class : App\Entity\ATK
+          label : 'Attaques'
+        Dresseur :
+          class : App\Entity\Dresseur
+          label : 'Dresseur'
+        EquipePokemon :
+          class : App\Entity\EquipePokemon
+          label : 'Equipe Pokemon'
+        Objects :
+          class : App\Entity\Objects
+          label : 'Objets'
+        Pokemon :
+          class : App\Entity\Pokemon
+          label : 'Pokémons'

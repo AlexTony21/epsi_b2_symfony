@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Backpack{% endblock %}
+
+{% block body %}
+    <h1>Backpack</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Enable</th>
+                <td>{{ objects.Enable ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ objects.CreatedAt ? objects.CreatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ objects.UpdatedAt ? objects.UpdatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DeletedAt</th>
+                <td>{{ objects.DeletedAt ? objects.DeletedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ objects.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ objects.nom }}</td>
+            </tr>
+            <tr>
+                <th>Effect</th>
+                <td>{{ objects.effet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('backpack_index') }}">back to list</a>
+
+{% endblock %}

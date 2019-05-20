@@ -19,6 +19,7 @@ class DRSFixtures extends Fixture
     		;
 
     		$manager->persist($dresseur);
+            $reference = $this -> addReference($Nom, $dresseur);
     	}
 
     	$manager->flush();

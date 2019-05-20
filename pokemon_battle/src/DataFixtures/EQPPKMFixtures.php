@@ -2,21 +2,24 @@
 
 namespace App\DataFixtures;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Pokemon;
 use App\Entity\Type;
 use App\Entity\EquipePokemon;
+use App\DataFixtures\DRSFixtures;
 
-class EQPPKMFixtures extends Fixture
+class EQPPKMFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-    	foreach ($this -> getEqpPkm() as [$name, $pkm]) {
-    		$eqppkm = new Pokemon;
+    	foreach ($this -> getEqpPkm() as [$name, $pkm, $pkm2, $pkm3, $pv]) {
+    		$eqppkm = new EquipePokemon;
     		$eqppkm
-    			-> addDresseur($name)
-    			-> addPokemon($pkm)
+    			-> addDresseur($this->getReference($name))
+    			-> addPokemon($this->getReference($pkm), $this->getReference($pkm2), $this->getReference($pkm3))
+                -> setPV($pv)
     		;
 
     		$manager->persist($eqppkm);
@@ -26,15 +29,16 @@ class EQPPKMFixtures extends Fixture
 
     }
 
+    public function getDependencies()
+    {
+        return [DRSFixtures::class];
+    }
+
     public function getEqpPkm()
     {
     	return [
-    		[$this->getReference('Sacha'), [$this->getReference('Hericendre'), $this->getReference('Grenousse'), $this->getReference('Vipelierre')]]
+    		['Sacha', 'Hericendre', 'Grenousse', 'Vipelierre', 20]
     	];
     }
 
-    public function getOrder()
-    {
-        return 6; // the order in which fixtures will be loaded
-    }
 }

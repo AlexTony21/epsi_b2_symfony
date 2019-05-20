@@ -35,7 +35,7 @@ class Dresseur implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\EquipePokemon", inversedBy="Dresseurs")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $equipePokemon;
 
@@ -127,5 +127,10 @@ class Dresseur implements UserInterface
         $this->equipePokemon = $equipePokemon;
 
         return $this;
+    }
+
+    public function __toString() 
+    {
+        return $this->Nom; 
     }
 }

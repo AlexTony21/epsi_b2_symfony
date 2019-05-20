@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Backpack index{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        	<h1>Backpack index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Effet</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for backpack in backpack %}
+            <tr>
+                <td>{{ backpack.id }}</td>
+                <td>{{ backpack.nom }}</td>
+                <td>{{ backpack.effet }}</td>
+                <td>
+                    <a href="{{ path('backpack_show', {'id': backpack.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
