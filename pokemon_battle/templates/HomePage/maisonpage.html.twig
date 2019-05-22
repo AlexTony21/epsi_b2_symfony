@@ -1,17 +1,19 @@
-{% extends 'base.html.twig' %} 
-{% block title %}Pokemon Battle!{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Welcome to the Pokemon Arena !</title>
+	<meta charset="utf-8">
+	{% block stylesheets %}
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	{% endblock %}
+</head>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-<hi>Bienvenue dans le monde merveilleux des pokemons!</hi>
-    <p>
-        <a href="{{path('app_login')}}"> Se connecter </a>
-        <p> S'enregistrer</p>
-    </p>
-</div>
-{% endblock %}
+<body>
+	<div>
+	<hi>Welcome to the POKEMON ARENA!</hi>
+	    <p>
+	        <a href="{{path('app_login')}}"> Login </a>
+	        <p>Sign Up</p>
+	    </p>
+	</div>
+</body>

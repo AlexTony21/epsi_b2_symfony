@@ -1,0 +1,12 @@
+html {
+	background: blue;
+}
+body {
+	position: relative;
+	color: white;
+	background-color: yellow;
+	background-image: url(/images/MerkaAAAAA.gif);
+	min-height: 45rem;
+	padding-bottom: 80px;
+	text-indent: 50px;
+}
